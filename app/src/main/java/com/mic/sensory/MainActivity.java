@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
     private TextView mGainTextView;
 
-    double mOffsetdB = 10;  // Offset for bar, i.e. 0 lit LEDs at 10 dB.
+
     // The Google ASR input requirements state that audio input sensitivity
     // should be set such that 90 dB SPL at 1000 Hz yields RMS of 2500 for
     // 16-bit samples, i.e. 20 * log_10(2500 / mGain) = 90.
@@ -99,7 +99,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         // Level adjustment buttons.
 
 
-
 // Minus 5 dB button event handler.
         Button minus5dbButton = (Button)findViewById(R.id.minus_5_db_button);
         DbClickListener minus5dBButtonListener = new DbClickListener(-5.0);
@@ -138,21 +137,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                 };
         settingsButton.setOnClickListener(settingsBtnListener);
 
-
-
-//        TextView sensorsData = (TextView) findViewById(R.id.textView3);
-//        sm = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-//        List list = sm.getSensorList(Sensor.TYPE_ALL);
-//
-//        StringBuilder data = new StringBuilder();
-//        for (Sensor sensor : list) {
-//            data.append(sensor.getName() + "\n");
-//            data.append(sensor.getVendor() + "\n");
-//            data.append(sensor.getVersion() + "\n");
-//
-//        }
-//        sensorsData.setText(data);
-//
 
 
         sm=(SensorManager)getSystemService(SENSOR_SERVICE);
@@ -234,9 +218,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
             temperature.setText("st C: " + event.values[0]);
 
-
-            // int sensor = event.type;
-            //   float[] values = event.values;
         }
 
         if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
