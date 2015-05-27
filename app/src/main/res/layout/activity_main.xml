@@ -24,14 +24,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ToggleButton
-        android:id="@+id/on_off_button"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="On"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Temp: "
+        android:text=" \u2103"
         android:id="@+id/temperature"
         android:layout_below="@+id/textView2"
         android:layout_alignLeft="@+id/acceleration"
@@ -75,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Pressure: "
+        android:text="hPa"
         android:id="@+id/pressure"
         android:layout_below="@+id/Pressure1"
         android:layout_alignParentLeft="true"
@@ -90,32 +82,42 @@
         android:layout_below="@+id/proximityTextView"
         android:layout_centerHorizontal="true" />
 
-    <!--<ToggleButton-->
-        <!--android:id="@+id/on_off_button2"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="On"-->
-        <!--android:layout_above="@+id/on_off_button3"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true" />-->
+    <ToggleButton
+        android:id="@+id/on_off_button_acceleration"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-    <!--<ToggleButton-->
-        <!--android:id="@+id/on_off_button3"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="On"-->
-        <!--android:layout_alignTop="@+id/proximityTextView"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true" />-->
 
-    <!--<ToggleButton-->
-        <!--android:id="@+id/on_off_button4"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="On"-->
-        <!--android:layout_alignTop="@+id/pressure"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true" />-->
+    <ToggleButton
+        android:id="@+id/on_off_button_temperature"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:layout_alignTop="@+id/temperature"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ToggleButton
+        android:id="@+id/on_off_button_proximity"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:layout_alignTop="@+id/proximityTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ToggleButton
+        android:id="@+id/on_off_button_pressure"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:layout_alignTop="@+id/pressure"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"

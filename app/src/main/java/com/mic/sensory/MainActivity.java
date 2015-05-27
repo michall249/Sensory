@@ -170,26 +170,88 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
 
 
-
     }
 
 
-
-
-
-
-
-
-    protected void onResume() {
+    public void onResume() {
 
         super.onResume();
-        sm.registerListener((SensorEventListener) this, (Sensor) accelerometer, SensorManager.SENSOR_DELAY_UI);
-        sm.registerListener((SensorEventListener)this,(Sensor) thermometer, SensorManager.SENSOR_DELAY_NORMAL);
-        sm.registerListener((SensorEventListener)this,(Sensor) proxSensor, SensorManager.SENSOR_DELAY_NORMAL);
-        sm.registerListener(this, mPressure, SensorManager.SENSOR_DELAY_NORMAL);
+
+
         //      sm.registerListener(this, mLight, SensorManager.SENSOR_DELAY_NORMAL);
 
 
+        final ToggleButton tb=(ToggleButton) findViewById(R.id.on_off_button_acceleration);
+        //Listener for ToggleButton
+        tb.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                if(tb.isChecked()){
+                    //Register the sensor
+                    sm.registerListener(MainActivity.this, (Sensor) accelerometer, SensorManager.SENSOR_DELAY_UI);
+
+                }
+                else{
+                    // Unregister the listener
+                    sm.unregisterListener(MainActivity.this, accelerometer);
+                    acceleration.setText("DISABLED");
+
+                }
+            }
+        });
+        final ToggleButton tb1=(ToggleButton) findViewById(R.id.on_off_button_temperature);
+        //Listener for ToggleButton
+        tb1.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                if(tb1.isChecked()){
+                    //Register the sensor
+                    sm.registerListener(MainActivity.this,(Sensor) thermometer, SensorManager.SENSOR_DELAY_NORMAL);
+                }
+                else{
+                    // Unregister the listener
+                    sm.unregisterListener(MainActivity.this, thermometer);
+                    temperature.setText("DISABLED");
+
+                }
+            }
+
+        });
+        final ToggleButton tb2=(ToggleButton) findViewById(R.id.on_off_button_proximity);
+        //Listener for ToggleButton
+        tb2.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                if(tb2.isChecked()){
+                    //Register the sensor
+                    sm.registerListener(MainActivity.this,(Sensor) proxSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                }
+                else{
+                    // Unregister the listener
+                    sm.unregisterListener(MainActivity.this, proxSensor);
+                    proxText.setText("DISABLED");
+
+                }
+            }
+        });
+
+        final ToggleButton tb3=(ToggleButton) findViewById(R.id.on_off_button_pressure);
+        //Listener for ToggleButton
+        tb3.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                if(tb3.isChecked()){
+                    //Register the sensor
+                    sm.registerListener(MainActivity.this, mPressure, SensorManager.SENSOR_DELAY_NORMAL);
+                }
+                else{
+                    // Unregister the listener
+                    sm.unregisterListener(MainActivity.this, mPressure);
+                    proxText.setText("DISABLED");
+
+                }
+            }
+        });
 
     }
 
@@ -205,6 +267,8 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
     protected void onPause() {
         super.onPause();
         sm.unregisterListener(this);
+
+
     }
 
     @Override
