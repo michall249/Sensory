@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -63,6 +64,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
     private static final String TAG = "MainActivity";
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
         micInput = new MicrophoneInput((MicrophoneInputListener) this);
 
-        test = (TextView) findViewById(R.id.test);
+      //  test = (TextView) findViewById(R.id.test);
         mdBTextView = (TextView) findViewById(R.id.dBTextView);
         mdBFractionTextView = (TextView) findViewById(R.id.dBFractionTextView);
         mGainTextView = (TextView) findViewById(R.id.gain);
@@ -206,15 +208,36 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
     }
 
-
+ //   float accel;
     @Override
     public void onSensorChanged(SensorEvent event) {
 
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            acceleration.setText("X: " + event.values[0] +
-                    "\nY: " + event.values[1] +
-                    "\nZ: " + event.values[2]);
+            final float accel = event.values[0];
+            final float accel1 = event.values[1];
+            final float accel2 = event.values[2];
+
+            ToggleButton toggle = (ToggleButton) findViewById(R.id.on_off_button);
+            toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        acceleration.setText("X: " +accel +
+                    "\nY: " + accel1 +
+                    "\nZ: " + accel2);
+                        // The toggle is enabled
+                    } else {
+                        acceleration.setText("Disable");
+                        // The toggle is disabled
+                    }
+                }
+            });
         }
+//        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+//            float accel = event.values[0];
+//            acceleration.setText("X: " +accel +
+//                    "\nY: " + event.values[1] +
+//                    "\nZ: " + event.values[2]);
+//        }
         if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
             temperature.setText("st C: " + event.values[0]);
 
