@@ -247,7 +247,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
                 else{
                     // Unregister the listener
                     sm.unregisterListener(MainActivity.this, mPressure);
-                    proxText.setText("DISABLED");
+                    pressure.setText("DISABLED");
 
                 }
             }
