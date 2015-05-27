@@ -242,15 +242,4 @@
         android:layout_toRightOf="@+id/Pressure1"
         android:layout_toEndOf="@+id/Pressure1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/test"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_toRightOf="@+id/linearLayout2"
-        android:layout_toEndOf="@+id/linearLayout2"
-        android:layout_marginTop="82dp" />
-
 </RelativeLayout>
