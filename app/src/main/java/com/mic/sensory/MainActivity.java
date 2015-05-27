@@ -9,9 +9,9 @@ import android.hardware.SensorManager;
 import android.media.MediaRecorder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -20,8 +20,8 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends ActionBarActivity implements SensorEventListener, MicrophoneInputListener {
 
-    //    private final static String NOT_SUPPORTED_MESSAGE = "Sorry, sensor not available for this device.";
-//    private final static String TAG = "SensorsList";
+    //private final static String NOT_SUPPORTED_MESSAGE = "Sorry, sensor not available for this device.";
+    //private final static String TAG = "SensorsList";
     Sensor accelerometer;
     SensorManager sm;
     TextView acceleration;
@@ -72,7 +72,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
         micInput = new MicrophoneInput((MicrophoneInputListener) this);
 
-      //  test = (TextView) findViewById(R.id.test);
         mdBTextView = (TextView) findViewById(R.id.dBTextView);
         mdBFractionTextView = (TextView) findViewById(R.id.dBFractionTextView);
         mGainTextView = (TextView) findViewById(R.id.gain);
@@ -168,6 +167,10 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
 
 
+
+
+
+
     }
 
 
@@ -185,6 +188,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         sm.registerListener((SensorEventListener)this,(Sensor) proxSensor, SensorManager.SENSOR_DELAY_NORMAL);
         sm.registerListener(this, mPressure, SensorManager.SENSOR_DELAY_NORMAL);
         //      sm.registerListener(this, mLight, SensorManager.SENSOR_DELAY_NORMAL);
+
 
 
     }
@@ -211,36 +215,17 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
  //   float accel;
     @Override
     public void onSensorChanged(SensorEvent event) {
-
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            final float accel = event.values[0];
-            final float accel1 = event.values[1];
-            final float accel2 = event.values[2];
-
-            ToggleButton toggle = (ToggleButton) findViewById(R.id.on_off_button);
-            toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        acceleration.setText("X: " +accel +
-                    "\nY: " + accel1 +
-                    "\nZ: " + accel2);
-                        // The toggle is enabled
-                    } else {
-                        acceleration.setText("Disable");
-                        // The toggle is disabled
-                    }
-                }
-            });
+            acceleration.setText("X: " + event.values[0] +
+                    "\nY: " + event.values[1] +
+                    "\nZ: " + event.values[2]);
         }
-//        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-//            float accel = event.values[0];
-//            acceleration.setText("X: " +accel +
-//                    "\nY: " + event.values[1] +
-//                    "\nZ: " + event.values[2]);
-//        }
         if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
             temperature.setText("st C: " + event.values[0]);
 
+
+            // int sensor = event.type;
+            //   float[] values = event.values;
         }
 
         if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
@@ -277,7 +262,7 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
             // Set up a method that runs on the UI thread to update of the LED bar
             // and numerical display.
-            test.post(new Runnable() {
+            mdBTextView.post(new Runnable() {
                 @Override
                 public void run() {
                     // The bar has an input range of [0.0 ; 1.0] and 10 segments.
@@ -320,6 +305,4 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 //    Log.i(TAG, "Sensor registered");
 //   sensorListenersList.add(sel);
 //    Log.d(TAG, "Sensor type is: " + s.getType());
-
-
 
