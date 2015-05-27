@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="hPa"
+        android:text="Pressure: "
         android:id="@+id/pressure"
         android:layout_below="@+id/Pressure1"
         android:layout_alignParentLeft="true"
@@ -243,5 +243,34 @@
         android:layout_toLeftOf="@+id/on_off_toggle_button"
         android:layout_toRightOf="@+id/Pressure1"
         android:layout_toEndOf="@+id/Pressure1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Light"
+        android:id="@+id/textView5"
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="lux"
+        android:id="@+id/light"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ToggleButton
+        android:id="@+id/on_off_button_light"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:layout_alignTop="@+id/light"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>

@@ -162,8 +162,8 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
         pressure=(TextView)findViewById(R.id.pressure);
 
 //Light
-//       mLight=sm.getDefaultSensor(Sensor.TYPE_LIGHT);
-//        mLightTxt=(TextView)findViewById(R.id.mLightTxt);
+       mLight=sm.getDefaultSensor(Sensor.TYPE_LIGHT);
+        mLightTxt=(TextView)findViewById(R.id.light);
 
 
 
@@ -177,8 +177,6 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
 
         super.onResume();
 
-
-        //      sm.registerListener(this, mLight, SensorManager.SENSOR_DELAY_NORMAL);
 
 
         final ToggleButton tb=(ToggleButton) findViewById(R.id.on_off_button_acceleration);
@@ -253,6 +251,23 @@ public class MainActivity extends ActionBarActivity implements SensorEventListen
             }
         });
 
+        final ToggleButton tb4=(ToggleButton) findViewById(R.id.on_off_button_light);
+        //Listener for ToggleButton
+        tb4.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                if(tb4.isChecked()){
+                    //Register the sensor
+                    sm.registerListener(MainActivity.this, mLight, SensorManager.SENSOR_DELAY_NORMAL);
+                }
+                else{
+                    // Unregister the listener
+                    sm.unregisterListener(MainActivity.this, mLight);
+                    mLightTxt.setText("DISABLED");
+
+                }
+            }
+        });
     }
 
     private void readPreferences() {
